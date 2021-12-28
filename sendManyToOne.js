@@ -56,7 +56,7 @@ function getScriptPbKey(WIF) {
     let pubKey = keypair.getPublicKeyBuffer();
     let pubKeyHash = bitcoin.crypto.hash160(pubKey);
     let redeemScript = bitcoin.script.witnessPubKeyHash.output.encode(pubKeyHash);
-     signaturePair.push({keypair,redeemScript});
+     signaturePair.push({key : keypair, script: redeemScript});
     let redeemScriptHash = bitcoin.crypto.hash160(redeemScript);
     let scriptPubkey = bitcoin.script.scriptHash.output.encode(redeemScriptHash);
 
@@ -72,7 +72,7 @@ txb.addOutput(hardwalletAddress, 30000); //first argument is receiving address, 
 //signing
 
 function multiSign() {
-    signaturePair.map(e => txb.sign(0, e.keypair, e.redeemScript, null, 35000))
+    signaturePair.map(e => txb.sign(0, e.key, e.script, null, 35000))
 }
 //amount is the FULL amount of the unspent output, NOT the amount we are sending
 
