@@ -2,8 +2,11 @@ const bitcoin = require("bitcoinjs-lib");
 const chalk = require('chalk');
 
 
-console.log(chalk.blue.bold("N:B This is a mock Example, and will not run because tx has no input"));
+console.log(chalk.blue.bold("N:B This is a mock Example",  '\n'));
 
+
+
+console.log(chalk.blue.bold("Please add transsaction input to make this work",  '\n'));
 
 
 console.log( '\n', chalk.blue.bgRed.bold('To test:') + " " + chalk.red('Make') + " " + chalk.blue.bold('Variable WIFS') + ("  ") + chalk.green('an array of private keys of p2sh-p2wpkh output'), '\n');
